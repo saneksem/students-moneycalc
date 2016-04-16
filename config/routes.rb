@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: "users/registrations" }
-  resources :users
+  resources :users, except: [ :new, :create ] do
+    resources :transactions, except: [ :update, :edit ]
+  end
+  
   devise_scope :user do
     get "signup", :to => "users/registrations#new", as: "signup"
     get "login", :to => "users/sessions#new", as: "login"
