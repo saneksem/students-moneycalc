@@ -21,5 +21,13 @@ describe User, type: :model do
 
     it { should_not be_valid }
   end
+
+  describe "create transaction" do
+    before { @user = build(:user), @transaction = build(:transaction) }
+
+    subject { @transaction }
+
+    it { should be_valid }
+  end
 end
 

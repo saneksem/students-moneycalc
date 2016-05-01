@@ -1,2 +1,18 @@
-<h1>Transactions#show</h1>
-<p>Find me in app/views/transactions/show.html.erb</p>
+<h1>Transaction info</h1>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @transaction.amount %>
+</p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @transaction.created_at %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @transaction.comment %>
+</p>
+
+<%= link_to 'Back', user_transactions_path %>

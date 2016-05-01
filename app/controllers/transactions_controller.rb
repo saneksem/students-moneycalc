@@ -7,6 +7,7 @@ class TransactionsController < ApplicationController
   end
 
   def show
+    @transaction = current_user.transactions[params[:id].to_i - 1]
   end
 
   def create

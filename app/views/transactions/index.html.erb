@@ -20,7 +20,11 @@
         <td><%= transaction.created_at %></td>
         <td><%= transaction.comment %></td>
         <td><%= link_to 'Show', user_transaction_path(@user, transaction) %></td>
-        <td><%= link_to 'Destroy', user_transaction_path(@user, transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% if transaction.user == current_user %>
+        <td><%= link_to 'Destroy', user_transaction_path(@user, transaction), method: :delete,
+                        data: { confirm: 'Are you sure want to delete your transaction?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
