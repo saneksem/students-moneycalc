@@ -2,6 +2,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   after_create :update_user_balance!
   validate :amount_is_not_zero
+  before_destroy { self.user = user }
 
   def update_user_balance!
     user.balance += amount
