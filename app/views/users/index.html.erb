@@ -6,7 +6,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>E-mail</th>
+      <th>Join date</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -14,9 +16,16 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if user == current_user %>
+              <%= link_to 'Delete', user, method: :delete,
+                          data: { confirm:'Are you sure want to delete your profile? All data will be lost!' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
